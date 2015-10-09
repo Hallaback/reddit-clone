@@ -35,22 +35,23 @@ cherrit.service('posts', function($http){
 	}
 
 	this.getOne = function(id){
-		return $http.get('https://api.parse.com/1/classes/posts/' + id)
+		return $http.get('https://api.parse.com/1/classes/posts/' + id);
 	}
 
 	this.remove = function(id){
-		return $http.delete('https://api.parse.com/1/classes/posts/' + id)
+		return $http.delete('https://api.parse.com/1/classes/posts/' + id);
 	}
 
 	this.create = function(post){
-		return $http.post('https://api.parse.com/1/classes/posts/', post)
+		post.upvote = 0;
+		return $http.post('https://api.parse.com/1/classes/posts/', post);
 	}
 
 	this.upvote = function(post){
 		var newPost = {};
 		angular.copy(post, newPost);
 		newPost.upvote++;
-		return	$http.put('https://api.parse.com/1/classes/posts/' + newPost.objectId, post)
+		return	$http.put('https://api.parse.com/1/classes/posts/' + newPost.objectId, post);
 
 	}
 
@@ -58,7 +59,7 @@ cherrit.service('posts', function($http){
 		var newPost = {};
 		angular.copy(post, newPost);
 		newPost.downvote--;
-		return	$http.put('https://api.parse.com/1/classes/posts/' + newPost.objectId, post)
+		return	$http.put('https://api.parse.com/1/classes/posts/' + newPost.objectId, post);
 
 	}
 });
@@ -93,7 +94,7 @@ cherrit.controller('compose-ctrl', function($scope, posts){
 
 	$scope.submit = function(){
 		posts.create($scope.post).then(function(){
-			$scope.cancel;
+			$scope.cancel();
 		})
 	}
 	
