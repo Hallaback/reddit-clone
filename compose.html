@@ -1,0 +1,21 @@
+<h1>Compose View</h1>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Title..." ng-model="post.title">
+      <input type="text" class="form-control" placeholder="Author..." ng-model="post.author">
+      <input type="text" class="form-control" placeholder="Body..." ng-model="post.body">
+      <span class="btn">
+      	<button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
+      	<button type="reset" class="btn btn-default" ng-click="cancel()">Cancel</button>
+      </span>
+    </div>
+  </div>
+</div>
+<pre>
+	<ul ng-repeat="post in posts">
+		<li>Title: {{" " + post.title}}</li>
+		<li>Author: {{" " + post.author}}</li>
+		<li>Body: {{" " + post.body}}</li>
+	</ul>
+</pre>

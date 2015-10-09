@@ -1,0 +1,25 @@
+<html ng-app="cherrit">
+<head>
+	<meta charset="UTF-8">
+	<title>Cherrit</title>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body class="container">
+	<div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-pills">
+              <li role="presentation" ui-sref-active="active"><a ui-sref="home">Home</a></li>
+              <li role="presentation" ui-sref-active="active"><a ui-sref="compose">Compose</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div ui-view class="col-sm-12"></div>
+    </div>
+
+	<script src="app.js"></script>
+</body>
+</html>
