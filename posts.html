@@ -1,11 +1,22 @@
 <h1>Posts View</h1>
 
-<ul class="list-group">
-  <li class="list-group-item" ng-repeat="post in posts">
-    <span class="badge">{{post.upvote}}</span>
-    <span><button class="btn btn-success" ng-click="upvote(post)">Upvote</button></span>
-    <span class="badge">{{post.downvote}}</span>
-    <span><button class="btn btn-danger" ng-click="downvote(post)">Downvote</button></span>
-    {{post.title}}
-  </li>
-</ul>
+<div class="panel panel-default" ng-repeat="post in posts | orderBy: '-upvote'">
+	<div class="panel-heading">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<span class="glyphicon glyphicon-trash delete-btn" aria-hidden="true" ng-click="delete(post.objectId)"></span>
+				<span class="badge">{{post.upvote}}</span>
+				<span><button class="btn btn-danger glyphicon glyphicon-circle-arrow-down" ng-click="downvote(post)"></button></span>
+				<span><button class="btn btn-success glyphicon glyphicon-circle-arrow-up" ng-click="upvote(post)"></button></span>
+					{{post.title}}
+			</li>
+		</ul>
+		<h4 class="panel-title"> View More <br>
+			<a class="glyphicon glyphicon-chevron-down" ng-click="isCollapsed = !isCollapsed"></a>
+		</h4>
+	</div>
+		<div collapse="isCollapsed">
+			<div class="panel-body">{{post.body}}
+			</div>
+		</div>
+</div>

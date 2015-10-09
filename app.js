@@ -1,4 +1,4 @@
-var cherrit = angular.module('cherrit', ['ui.router']);
+var cherrit = angular.module('cherrit', ['ui.router', 'ui.bootstrap']);
 
 cherrit.config(function($urlRouterProvider, $stateProvider){
 	$urlRouterProvider.otherwise('/whoops');
@@ -79,6 +79,16 @@ cherrit.controller('posts-ctrl', function($scope, posts){
 			post.upvote--;
 		})
 	}
+	$scope.delete = function(id){
+		posts.remove(id).then(function(){
+			$scope.posts.forEach(function(post, idx){
+				if(post.objectId === id){
+					$scope.posts.splice(idx, 1);
+				}
+			})
+		})
+	}
+	$scope.isCollapsed = true;
 });
 
 cherrit.controller('compose-ctrl', function($scope, posts){
